@@ -110,7 +110,7 @@ File categories: ${JSON.stringify(cats)}
 Files (sample): ${repoData.allFiles.slice(0, 60).map(f => f.path).join(", ")}
 File previews:\n${previewText}
 
-Return ONLY this JSON (no markdown):
+CRITICAL INSTRUCTION: You MUST respond with ONLY a valid JSON object. No preamble, no explanation, no markdown, no code blocks, no conversational text. Your entire response must begin with { and end with }. If you cannot comply, return {"error":"analysis failed"}. Any other format will break the application. Return this exact JSON structure:
 {"repoSummary":"","domainSignals":[],"consequenceScore":0,"consequenceRationale":"","verdict":"GO|PASS|REVISIT","verdictRationale":"","buildAngles":[{"title":"","scale":"Solo|Small Team|Enterprise","monetization":"SaaS|API Tool|Marketplace|Open Source + Services","description":"","techStack":[],"timeToMVP":"","difficulty":"Beginner|Intermediate|Advanced"}],"risks":[],"nextStep":""}`;
   return callClaude([{ role: "user", content: prompt }], false, anthropicKey);
 }
@@ -128,7 +128,8 @@ File categories: ${JSON.stringify(cats)}
 Files: ${repoData.allFiles.slice(0, 60).map(f => f.path).join(", ")}
 File previews:\n${previewText}
 
-Return ONLY this JSON (no markdown):
+CRITICAL INSTRUCTION: You MUST respond with ONLY a valid JSON object. No preamble, no explanation, no markdown, no code blocks, no conversational text. Your entire response must begin with { and end with }. If you cannot comply, return {"error":"analysis failed"}. Any other format will break the application.
+Return this exact JSON structure:
 {"repoSummary":"","domainSignals":[],"trendSignals":[],"marketContext":"","consequenceScore":0,"consequenceRationale":"","verdict":"GO|PASS|REVISIT","verdictRationale":"","buildAngles":[{"title":"","scale":"Solo|Small Team|Enterprise","monetization":"SaaS|API Tool|Marketplace|Open Source + Services","description":"","techStack":[],"timeToMVP":"","difficulty":"Beginner|Intermediate|Advanced","marketEvidence":""}],"competitors":[{"name":"","url":"","gap":""}],"risks":[],"nextStep":""}`;
   return callClaude([{ role: "user", content: prompt }], true, anthropicKey);
 }
